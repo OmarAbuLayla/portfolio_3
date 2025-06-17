@@ -4,6 +4,12 @@ import './App.css';
 const Portfolio = () => {
   const [isVisible, setIsVisible] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
