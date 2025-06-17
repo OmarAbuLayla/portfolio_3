@@ -1,35 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Download, 
-  ExternalLink,
-  Menu,
-  X,
-  ChevronDown,
-  Star,
-  Calendar,
-  MapPin,
-  Users,
-  Award,
-  Briefcase,
-  Code,
-  Database,
-  Brain,
-  BarChart3,
-  TrendingUp,
-  Shield,
-  FileText,
-  Activity,
-  Heart,
-  Car,
-  Grape,
-  TreePine,
-  Home,
-  ShoppingCart
-} from 'lucide-react';
 import './App.css';
 
 const Portfolio = () => {
