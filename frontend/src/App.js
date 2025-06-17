@@ -53,7 +53,7 @@ const Portfolio = () => {
       title: "Local AI-Powered Customer Service Chatbot",
       description: "A local AI chatbot for customer service that extracts insights about customer needs, preferences, and behaviors. Provides real-time responses while capturing valuable data to help businesses improve decision-making and service strategies.",
       tech: ["Local LLMs", "Flask", "RAG", "HuggingFace", "Python", "CSV Logging", "Ngrok"],
-      link: "#", 
+      link: "https://github.com/OmarAbuLayla/AI-Chatbot", 
       featured: true
     }
   ];
