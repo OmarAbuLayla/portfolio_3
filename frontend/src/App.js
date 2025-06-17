@@ -51,7 +51,7 @@ const Portfolio = () => {
     },
     {
       title: "Local AI-Powered Customer Service Chatbot",
-      description: "A local, AI-powered chatbot designed for customer service. It interacts with customers to understand their needs and extract valuable insights, such as common issues, preferences, and behaviors. These insights are then sent to the seller or service provider to help improve decision-making, customer engagement, and overall service strategies. The chatbot is fully integrated with a backend API to provide real-time responses and capture data for ongoing improvement.",
+      description: "A local AI chatbot for customer service that extracts insights about customer needs, preferences, and behaviors. Provides real-time responses while capturing valuable data to help businesses improve decision-making and service strategies.",
       tech: ["Local LLMs", "Flask", "RAG", "HuggingFace", "Python", "CSV Logging", "Ngrok"],
       link: "#", 
       featured: true
