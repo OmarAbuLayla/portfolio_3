@@ -234,9 +234,9 @@ const Portfolio = () => {
             {/* Mobile menu button */}
             <button
               className="md:hidden p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
             {/* Download CV Button */}
