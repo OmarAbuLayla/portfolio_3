@@ -46,7 +46,7 @@ const Portfolio = () => {
       title: "Insightify – AI-Powered Data Storytelling",
       description: "A local LLM-powered tool that transforms raw CSV datasets into structured, human-readable insights. Designed for analysts, strategists, and decision-makers to quickly understand trends, risks, and recommendations — without writing a single line of code.",
       tech: ["LLMs", "Pandas", "Flask", "Data Analysis", "Private AI"],
-      link: "#",
+      link: "https://github.com/OmarAbuLayla/Insightify",
       featured: true
     },
     {
