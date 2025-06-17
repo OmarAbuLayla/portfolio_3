@@ -35,20 +35,32 @@ const Portfolio = () => {
 
   const aiProjects = [
     {
+      title: "Hayat AI - Medical Assistant",
+      description: "A two-part AI system for medical diagnostics: Hayat 2.0 analyzes medical images (X-ray/MRI) and Hayat 1.0 explains diagnoses in Arabic using LLMs. The backend integrates image classification and LLM communication through Flask APIs.",
+      tech: ["Python", "LLMs", "Flask API", "Image Classification", "Arabic NLP"],
+      link: "https://github.com/OmarAbuLayla/Hayat",
+      featured: true
+    },
+    {
+      title: "Complyt AI - Regulatory Compliance Analyzer",
+      description: "An LLM-powered tool for summarizing and extracting insights from SOPs, CAPAs, and regulatory texts. Uses RAG with FAISS and custom prompts. Designed to evolve into a modular SaaS platform.",
+      tech: ["LLMs", "RAG", "FAISS", "Python", "SaaS"],
+      link: "https://github.com/OmarAbuLayla/Complyt",
+      featured: true
+    },
+    {
       title: "Insightify – AI-Powered Data Storytelling",
       description: "A local LLM-powered tool that transforms raw CSV datasets into structured, human-readable insights. Designed for analysts, strategists, and decision-makers to quickly understand trends, risks, and recommendations — without writing a single line of code.",
       tech: ["LLMs", "Pandas", "Flask", "Data Analysis", "Private AI"],
       link: "#",
-      featured: true,
-      icon: <Brain className="w-8 h-8" />
+      featured: true
     },
     {
       title: "Local AI-Powered Customer Service Chatbot",
       description: "A local, AI-powered chatbot designed for customer service. It interacts with customers to understand their needs and extract valuable insights, such as common issues, preferences, and behaviors. These insights are then sent to the seller or service provider to help improve decision-making, customer engagement, and overall service strategies. The chatbot is fully integrated with a backend API to provide real-time responses and capture data for ongoing improvement.",
       tech: ["Local LLMs", "Flask", "RAG", "HuggingFace", "Python", "CSV Logging", "Ngrok"],
-      link: "#",
-      featured: true,
-      icon: <Users className="w-8 h-8" />
+      link: "#", 
+      featured: true
     }
   ];
 
