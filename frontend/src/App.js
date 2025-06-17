@@ -291,11 +291,7 @@ const Portfolio = () => {
             <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">About Me</h2>
             <div className="w-20 h-1 bg-[#34a853] mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div 
-              className="bg-cover bg-center bg-no-repeat rounded-2xl h-96 shadow-xl"
-              style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86)' }}
-            ></div>
+          <div className="max-w-4xl">
             <div className="space-y-6">
               <h3 className="text-2xl font-medium text-gray-900 mb-4">Professional Journey</h3>
               <p className="text-gray-600 leading-relaxed">
