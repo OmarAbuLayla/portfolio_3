@@ -151,43 +151,24 @@ const Portfolio = () => {
   ];
 
   const skills = [
-    {
-      category: "Programming Languages",
-      items: [
-        { name: "Python", level: 95, icon: "🐍" },
-        { name: "JavaScript", level: 85, icon: "🌐" },
-        { name: "SQL", level: 90, icon: "🗄️" },
-        { name: "R", level: 80, icon: "📊" }
-      ]
-    },
-    {
-      category: "AI & Machine Learning",
-      items: [
-        { name: "TensorFlow", level: 88, icon: "🤖" },
-        { name: "PyTorch", level: 85, icon: "🔥" },
-        { name: "Scikit-learn", level: 92, icon: "🔬" },
-        { name: "Pandas", level: 95, icon: "🐼" },
-        { name: "NumPy", level: 93, icon: "🔢" }
-      ]
-    },
-    {
-      category: "Data Visualization",
-      items: [
-        { name: "Matplotlib", level: 90, icon: "📈" },
-        { name: "Seaborn", level: 88, icon: "🎨" },
-        { name: "Plotly", level: 85, icon: "📊" },
-        { name: "Tableau", level: 80, icon: "📋" }
-      ]
-    },
-    {
-      category: "Cloud & Tools",
-      items: [
-        { name: "AWS", level: 75, icon: "☁️" },
-        { name: "Docker", level: 80, icon: "🐳" },
-        { name: "Git", level: 90, icon: "🔄" },
-        { name: "Jupyter", level: 95, icon: "📓" }
-      ]
-    }
+    { name: "Python", icon: "🐍" },
+    { name: "SQL", icon: "🗃️" },
+    { name: "Pandas", icon: "🐼" },
+    { name: "NumPy", icon: "🔢" },
+    { name: "Matplotlib", icon: "📊" },
+    { name: "Seaborn", icon: "📈" },
+    { name: "Machine Learning", icon: "🤖" },
+    { name: "Statistical Analysis", icon: "📊" },
+    { name: "Data Cleaning", icon: "🧹" },
+    { name: "Exploratory Data Analysis (EDA)", icon: "🔍" },
+    { name: "Generative AI", icon: "✨" },
+    { name: "Transformers (LLMs)", icon: "🧠" },
+    { name: "RAG Pipelines", icon: "🔗" },
+    { name: "Hugging Face", icon: "🤗" },
+    { name: "Embeddings & FAISS", icon: "🎯" },
+    { name: "OpenAI API", icon: "⚡" },
+    { name: "Vector Search", icon: "🔍" },
+    { name: "Flask APIs", icon: "🌐" }
   ];
 
   if (isLoading) {
