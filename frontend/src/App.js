@@ -221,7 +221,7 @@ const Portfolio = () => {
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
                   className={`px-3 py-2 text-sm font-medium transition-colors ${
-                    activeSection === item.toLowerCase() 
+                    isVisible[item.toLowerCase()]
                       ? 'text-green-600 border-b-2 border-green-600' 
                       : 'text-gray-700 hover:text-green-600'
                   }`}
