@@ -66,94 +66,87 @@ const Portfolio = () => {
 
   const dataProjects = [
     {
-      title: "Hayat AI - Medical Assistant",
-      description: "A two-part AI system for medical diagnostics: Hayat 2.0 analyzes medical images (X-ray/MRI) and Hayat 1.0 explains diagnoses in Arabic using LLMs. The backend integrates image classification and LLM communication through Flask APIs.",
-      link: "https://github.com/OmarAbuLayla/Hayat",
-      icon: <Heart className="w-6 h-6" />
-    },
-    {
-      title: "Complyt AI - Regulatory Compliance Analyzer",
-      description: "An LLM-powered tool for summarizing and extracting insights from SOPs, CAPAs, and regulatory texts. Uses RAG with FAISS and custom prompts. Designed to evolve into a modular SaaS platform.",
-      link: "https://github.com/OmarAbuLayla/Complyt",
-      icon: <Shield className="w-6 h-6" />
-    },
-    {
       title: "NYC School Test Scores Analysis",
       description: "Analyzed NYC public school test scores using data manipulation and visualization techniques to identify performance trends across districts.",
-      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/NY%20Schools.py",
-      icon: <BarChart3 className="w-6 h-6" />
+      tech: ["Python", "Pandas", "Data Visualization"],
+      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/NY%20Schools.py"
     },
     {
       title: "Movie Data Analysis",
       description: "Explored movie data to analyze relationships between budget, revenue, and ratings using Python, Pandas, and Seaborn.",
-      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/netflix%20-%20Copy.py",
-      icon: <TrendingUp className="w-6 h-6" />
+      tech: ["Python", "Pandas", "Seaborn"],
+      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/netflix%20-%20Copy.py"
     },
     {
       title: "Supermarket Sales Analysis",
       description: "Analyzed supermarket sales data to identify trends in product performance, customer behavior, and branch efficiency.",
-      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/Supermarket%20Analysis.py",
-      icon: <ShoppingCart className="w-6 h-6" />
+      tech: ["Python", "Data Analysis", "Business Intelligence"],
+      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/Supermarket%20Analysis.py"
     },
     {
       title: "Pitch Analysis in Parkinson's Disease",
       description: "Analyzed vocal pitch data to identify differences between healthy individuals and those with Parkinson's Disease using Python, Pandas, Matplotlib, and Seaborn.",
-      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/Parkinsons",
-      icon: <Activity className="w-6 h-6" />
+      tech: ["Python", "Medical Data", "Statistical Analysis"],
+      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/Parkinsons"
     },
     {
       title: "Breast Cancer Dataset Analysis",
       description: "Explored a Breast Cancer dataset to analyze tumor characteristics and their correlation with diagnosis using Python, Seaborn, and Matplotlib.",
-      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/Breastcancer.py",
-      icon: <Heart className="w-6 h-6" />
+      tech: ["Python", "Medical Data", "Machine Learning"],
+      link: "https://github.com/OmarAbuLayla/portfolio_old/blob/main/projects/Breastcancer.py"
+    },
+    {
+      title: "FIFA World Cup Goals Analysis",
+      description: "Analyzed goal distributions in men's and women's FIFA World Cup matches using Python, Pandas, and Seaborn. Applied the Mann-Whitney U test to compare scoring patterns.",
+      tech: ["Python", "Statistical Testing", "Sports Analytics"] 
     },
     {
       title: "Diabetes Prediction Model",
       description: "Developed a logistic regression model using Statsmodels to predict diabetes based on glucose levels, with real-time user input.",
-      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/prediction_model.py",
-      icon: <Activity className="w-6 h-6" />
+      tech: ["Machine Learning", "Logistic Regression", "Predictive Modeling"],
+      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/prediction_model.py"
     },
     {
       title: "Heart Failure Risk Analysis",
       description: "Evaluated logistic regression models on clinical records to predict heart failure risk using features like smoking, diabetes, and high blood pressure.",
-      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/heart_failure.py",
-      icon: <Heart className="w-6 h-6" />
+      tech: ["Machine Learning", "Healthcare", "Risk Analysis"],
+      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/heart_failure.py"
     },
     {
       title: "Car Insurance Claim Prediction",
       description: "Mapped driving experience to numeric values and used logistic regression to predict if an insurance claim will be filed based on user input.",
-      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/car_insurance_to_predict.py",
-      icon: <Car className="w-6 h-6" />
+      tech: ["Machine Learning", "Insurance", "Predictive Analytics"],
+      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/car_insurance_to_predict.py"
     },
     {
       title: "Soil Measures Crop Prediction",
       description: "Evaluated soil nutrient features using multinomial logistic regression to predict crop type and identified the best predictor based on F1-scores.",
-      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/project10.py",
-      icon: <Grape className="w-6 h-6" />
+      tech: ["Machine Learning", "Agriculture", "Classification"],
+      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/project10.py"
     },
     {
       title: "Penguins Clustering Analysis",
       description: "Applied K-Means clustering on the penguins dataset after scaling numeric features and computed cluster-wise averages.",
-      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/project11.py",
-      icon: <TreePine className="w-6 h-6" />
+      tech: ["Unsupervised Learning", "K-Means", "Data Clustering"],
+      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/project11.py"
     },
     {
       title: "Rental Duration Prediction",
       description: "Built a K-Nearest Neighbors regression model to predict rental duration based on amount paid, release year, rental rate, and movie length.",
-      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/Movie_pred_from_user.py",
-      icon: <FileText className="w-6 h-6" />
+      tech: ["KNN", "Regression", "Predictive Modeling"],
+      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/Movie_pred_from_user.py"
     },
     {
       title: "Airbnb Market Analysis",
       description: "Merged multiple Airbnb datasets to evaluate listing details including pricing, review dates, and room types, with visualizations of average prices and listing counts.",
-      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/Airbnb_project.py",
-      icon: <Home className="w-6 h-6" />
+      tech: ["Data Merging", "Market Analysis", "Visualization"],
+      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/Airbnb_project.py"
     },
     {
       title: "Mall Customers Clustering",
       description: "Segmented mall customers using K-Means clustering based on annual income and spending score, employing the elbow method to determine optimal clusters.",
-      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/Mall.py",
-      icon: <ShoppingCart className="w-6 h-6" />
+      tech: ["Customer Segmentation", "K-Means", "Business Analytics"],
+      link: "https://github.com/OmarAbuLayla/portfolio/blob/main/projects/Mall.py"
     }
   ];
 
