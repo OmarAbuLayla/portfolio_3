@@ -4,12 +4,6 @@ import './App.css';
 const Portfolio = () => {
   const [isVisible, setIsVisible] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -171,34 +165,13 @@ const Portfolio = () => {
     { name: "Flask APIs", icon: "🌐" }
   ];
 
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-gray-50 flex items-center justify-center z-50">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center"
-        >
-          <div className="w-16 h-16 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg">Loading Portfolio...</p>
-        </motion.div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-40 border-b border-gray-200">
+      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <motion.div 
-              className="text-xl font-bold text-gray-900"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-            >
-              Omar Abu Layla
-            </motion.div>
+            <div className="text-xl font-semibold text-gray-900">Omar Abu Layla</div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
@@ -206,367 +179,255 @@ const Portfolio = () => {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`px-3 py-2 text-sm font-medium transition-colors ${
-                    isVisible[item.toLowerCase()]
-                      ? 'text-green-600 border-b-2 border-green-600' 
-                      : 'text-gray-700 hover:text-green-600'
-                  }`}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-[#e8f5e9] rounded-full transition-all duration-300"
                 >
                   {item}
                 </button>
               ))}
+              <a
+                href="https://drive.google.com/file/d/1alHT7O3X6p2NCR_BzTwhz2fY-3_oX_Aa/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 bg-[#34a853] text-white text-sm font-medium rounded-full hover:bg-[#2d8f47] transition-all duration-300 transform hover:scale-105"
+              >
+                Download CV
+              </a>
             </div>
 
             {/* Mobile menu button */}
-            <button
-              className="md:hidden p-2"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-
-            {/* Download CV Button */}
-            <motion.button
-              className="hidden md:flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Download size={16} />
-              <span>Download CV</span>
-            </motion.button>
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-[#e8f5e9] transition-all duration-300"
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {isMobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence>
+          {/* Mobile Navigation Menu */}
           {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-gray-200"
-            >
-              <div className="px-4 py-2 space-y-2">
+            <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100">
+              <div className="px-2 pt-2 pb-3 space-y-1">
                 {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
                   <button
                     key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-gray-50 rounded-lg transition-colors"
+                    onClick={() => {
+                      scrollToSection(item.toLowerCase());
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-[#e8f5e9] rounded-md transition-all duration-300"
                   >
                     {item}
                   </button>
                 ))}
-                <button className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors w-full justify-center">
-                  <Download size={16} />
-                  <span>Download CV</span>
-                </button>
+                <a
+                  href="https://drive.google.com/file/d/1alHT7O3X6p2NCR_BzTwhz2fY-3_oX_Aa/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center px-3 py-2 mt-4 bg-[#34a853] text-white font-medium rounded-md hover:bg-[#2d8f47] transition-all duration-300"
+                >
+                  Download CV
+                </a>
               </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
+        </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-green-50"></div>
-        <div className="relative z-10 text-center px-4">
-          <motion.div
-            className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white shadow-2xl"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" 
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1644325349124-d1756b79dd42)'
+          }}
+        ></div>
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <div className="mb-8">
+            <img
+              src="https://omarabulayla.github.io/portfolio_old/pics/Omar2.png"
               alt="Omar Abu Layla"
-              className="w-full h-full object-cover"
+              className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 border-4 border-[#e8f5e9] shadow-lg"
             />
-          </motion.div>
-          
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold text-gray-900 mb-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          </div>
+          <h1 className="text-5xl md:text-7xl font-light text-gray-900 mb-4 animate-fade-in">
             Omar Abu Layla
-          </motion.h1>
-          
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+          </h1>
+          <h2 className="text-2xl md:text-3xl font-light text-gray-600 mb-6 animate-fade-in-delay-1">
             AI Developer & Data Scientist
-          </motion.p>
-          
-          <motion.p
-            className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            Passionate about Data Science, Machine Learning, and AI Development.<br/>
+          </h2>
+          <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-delay-2">
+            Passionate about Data Science, Machine Learning, and AI Development. 
             Building intelligent solutions that make a difference.
-          </motion.p>
-          
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-3">
             <button
               onClick={() => scrollToSection('projects')}
-              className="bg-green-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
+              className="px-8 py-4 bg-[#34a853] text-white font-medium rounded-full hover:bg-[#2d8f47] transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               View My Work
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-medium hover:border-green-600 hover:text-green-600 transition-colors"
+              className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-medium rounded-full hover:border-[#34a853] hover:text-[#34a853] transition-all duration-300"
             >
               Get In Touch
             </button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
-            <div className="w-20 h-1 bg-green-600 mx-auto"></div>
-          </motion.div>
-
+      <section id="about" className={`py-20 ${isVisible.about ? 'animate-fade-in-up' : 'opacity-0'}`}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">About Me</h2>
+            <div className="w-20 h-1 bg-[#34a853] mx-auto"></div>
+          </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="bg-gray-50 p-8 rounded-xl">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Professional Journey</h3>
-                <p className="text-gray-600 mb-4">
-                  As an AI Developer and Data Scientist, I specialize in transforming raw data into actionable insights. My expertise spans across multiple domains including machine learning, data visualization, and intelligent system development.
-                </p>
-                <p className="text-gray-600 mb-6">
-                  I specialize in building AI-powered applications, from medical diagnosis tools to regulatory compliance analyzers, combining cutting-edge LLM technology with robust data science foundations.
-                </p>
-                
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-gray-900">DataCamp Certifications Highlights:</h4>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <Award className="w-4 h-4 text-green-600" />
-                      <span>25 courses covering Python, data analysis, and ML</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Award className="w-4 h-4 text-green-600" />
-                      <span>4 certification exams with hands-on projects</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Award className="w-4 h-4 text-green-600" />
-                      <span>Advanced topics: Statistical Analysis, SQL & Development</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Award className="w-4 h-4 text-green-600" />
-                      <span>Real-world applications: Built forex and Google AI apps</span>
-                    </div>
-                  </div>
-                </div>
+            <div 
+              className="bg-cover bg-center bg-no-repeat rounded-2xl h-96 shadow-xl"
+              style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86)' }}
+            ></div>
+            <div className="space-y-6">
+              <h3 className="text-2xl font-medium text-gray-900 mb-4">Professional Journey</h3>
+              <p className="text-gray-600 leading-relaxed">
+                As an Associate Data Scientist certified through DataCamp's comprehensive 120-hour career track, 
+                I've mastered the complete data science pipeline from data wrangling to machine learning deployment.
+              </p>
+              <div className="bg-[#e8f5e9] p-6 rounded-xl">
+                <h4 className="font-semibold text-gray-900 mb-3">DataCamp Certification Highlights:</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• 23 courses covering Python, data analysis, and ML</li>
+                  <li>• 3 certification exams with hands-on projects</li>
+                  <li>• Advanced topics: Statistical Analysis, SQL, AI Development</li>
+                  <li>• Real-world applications: Built Hayat AI and Complyt AI</li>
+                </ul>
               </div>
-            </motion.div>
-
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-xl">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Current Focus</h3>
-                <p className="text-gray-600 mb-4">
-                  I specialize in building AI-powered applications, from medical diagnosis tools to regulatory compliance analyzers, combining cutting-edge LLM technology with robust data science foundations.
-                </p>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div className="bg-white p-3 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Brain className="w-4 h-4 text-blue-600" />
-                      <span className="font-medium">AI Development</span>
-                    </div>
-                    <p className="text-gray-600">Local LLMs, RAG systems, chatbots</p>
-                  </div>
-                  <div className="bg-white p-3 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <BarChart3 className="w-4 h-4 text-green-600" />
-                      <span className="font-medium">Data Science</span>
-                    </div>
-                    <p className="text-gray-600">Predictive modeling, clustering, analysis</p>
-                  </div>
-                  <div className="bg-white p-3 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Code className="w-4 h-4 text-purple-600" />
-                      <span className="font-medium">Full-Stack</span>
-                    </div>
-                    <p className="text-gray-600">Flask, APIs, data pipelines</p>
-                  </div>
-                  <div className="bg-white p-3 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Shield className="w-4 h-4 text-red-600" />
-                      <span className="font-medium">Healthcare AI</span>
-                    </div>
-                    <p className="text-gray-600">Medical imaging, diagnostics</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              <p className="text-gray-600 leading-relaxed">
+                I specialize in building AI-powered applications, from medical diagnostic tools to regulatory 
+                compliance analyzers, combining cutting-edge LLM technology with robust data science foundations.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Technical Skills</h2>
-            <div className="w-20 h-1 bg-green-600 mx-auto"></div>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {skills.map((category, index) => (
-              <motion.div
-                key={category.category}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+      <section id="skills" className={`py-20 bg-gray-50 ${isVisible.skills ? 'animate-fade-in-up' : 'opacity-0'}`}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">Technical Skills</h2>
+            <div className="w-20 h-1 bg-[#34a853] mx-auto"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skills.map((skill, index) => (
+              <div
+                key={skill.name}
+                className="bg-gradient-to-br from-[#e8f5e9] to-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-[#34a853]/20"
+                style={{ animationDelay: `${index * 50}ms` }}
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">{category.category}</h3>
-                <div className="space-y-4">
-                  {category.items.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-lg">{skill.icon}</span>
-                          <span className="text-sm font-medium text-gray-700">{skill.name}</span>
-                        </div>
-                        <span className="text-sm text-gray-500">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <motion.div
-                          className="bg-green-600 h-2 rounded-full"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.5 }}
-                        />
-                      </div>
-                    </div>
-                  ))}
+                <div className="flex items-center">
+                  <div className="text-3xl mr-4">{skill.icon}</div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{skill.name}</h3>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-white">
+      <section id="projects" className={`py-20 ${isVisible.projects ? 'animate-fade-in-up' : 'opacity-0'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Projects</h2>
-            <div className="w-20 h-1 bg-green-600 mx-auto"></div>
-          </motion.div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">Featured Work</h2>
+            <div className="w-20 h-1 bg-[#34a853] mx-auto"></div>
+          </div>
 
-          {/* AI Projects */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">AI Projects</h3>
+          {/* Featured AI Projects */}
+          <div className="mb-20">
+            <h3 className="text-2xl font-medium text-gray-900 mb-8 text-center">AI Development Projects</h3>
             <div className="grid md:grid-cols-2 gap-8">
               {aiProjects.map((project, index) => (
-                <motion.div
+                <div
                   key={project.title}
-                  className="bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border-2 border-green-200"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-[#e8f5e9] to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-[#34a853]/20"
                 >
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="text-green-600">{project.icon}</div>
-                    <h4 className="text-xl font-bold text-gray-900">{project.title}</h4>
-                    <div className="flex items-center space-x-1 text-yellow-500">
-                      <Star className="w-4 h-4 fill-current" />
-                      <span className="text-xs font-medium">Featured</span>
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-[#34a853] rounded-full flex items-center justify-center mr-4">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
                     </div>
+                    <h4 className="text-xl font-semibold text-gray-900">{project.title}</h4>
                   </div>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech) => (
-                      <span key={tech} className="bg-white text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
+                      <span key={tech} className="px-3 py-1 bg-white text-[#34a853] text-sm font-medium rounded-full border border-[#34a853]/30">
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center space-x-4">
-                    <a
-                      href={project.link}
-                      className="flex items-center space-x-2 text-green-600 hover:text-green-700 font-medium"
-                    >
-                      <ExternalLink size={16} />
-                      <span>View Project</span>
-                    </a>
-                  </div>
-                </motion.div>
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#34a853] font-medium hover:text-[#2d8f47] transition-colors"
+                  >
+                    View Project →
+                  </a>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Data Projects */}
+          {/* Data Science Projects */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Data Projects</h3>
+            <h3 className="text-2xl font-medium text-gray-900 mb-8 text-center">Data Science Projects</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {dataProjects.map((project, index) => (
-                <motion.div
+                <div
                   key={project.title}
-                  className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
+                  className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-200"
                 >
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="text-blue-600">{project.icon}</div>
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
                     <h4 className="text-lg font-semibold text-gray-900">{project.title}</h4>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-                  <a
-                    href={project.link}
-                    className="flex items-center space-x-2 text-green-600 hover:text-green-700 font-medium text-sm"
-                  >
-                    <Github size={14} />
-                    <span>View Code</span>
-                  </a>
-                </motion.div>
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-white text-blue-600 text-xs font-medium rounded-full border border-blue-200">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  {project.link && (
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 font-medium hover:text-blue-700 transition-colors"
+                    >
+                      View Project →
+                    </a>
+                  )}
+                </div>
               ))}
             </div>
           </div>
@@ -574,76 +435,37 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact</h2>
-            <div className="w-20 h-1 bg-green-600 mx-auto"></div>
-          </motion.div>
-
-          <div className="max-w-2xl mx-auto text-center">
-            <motion.p
-              className="text-lg text-gray-600 mb-8"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+      <section id="contact" className={`py-20 bg-gray-50 ${isVisible.contact ? 'animate-fade-in-up' : 'opacity-0'}`}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">Let's Connect</h2>
+          <div className="w-20 h-1 bg-[#34a853] mx-auto mb-8"></div>
+          <p className="text-xl text-gray-600 mb-12 leading-relaxed">
+            Ready to collaborate on your next AI or data science project? 
+            Let's discuss how we can bring your ideas to life.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a
+              href="mailto:O.Abulayla@outlook.com"
+              className="px-8 py-4 bg-[#34a853] text-white font-medium rounded-full hover:bg-[#2d8f47] transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              Let's connect and discuss how we can work together to build intelligent solutions that make a difference.
-            </motion.p>
-
-            <motion.div
-              className="flex justify-center space-x-6"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              Send Email
+            </a>
+            <a
+              href="https://www.linkedin.com/in/omar-abulayla/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 border-2 border-[#34a853] text-[#34a853] font-medium rounded-full hover:bg-[#34a853] hover:text-white transition-all duration-300"
             >
-              <a
-                href="mailto:contact@omarabulayla.com"
-                className="flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
-              >
-                <Mail size={20} />
-                <span>Email Me</span>
-              </a>
-              <a
-                href="https://linkedin.com/in/omarabulayla"
-                className="flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                <Linkedin size={20} />
-                <span>LinkedIn</span>
-              </a>
-              <a
-                href="https://github.com/omarabulayla"
-                className="flex items-center space-x-2 bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors"
-              >
-                <Github size={20} />
-                <span>GitHub</span>
-              </a>
-            </motion.div>
+              LinkedIn Profile
+            </a>
+          </div>
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <p className="text-gray-500">
+              Email: <span className="font-medium">O.Abulayla@outlook.com</span>
+            </p>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-center md:text-left">
-              <p className="text-gray-400">© 2025 Omar Abu Layla. All rights reserved.</p>
-            </div>
-            <div className="flex items-center space-x-2 text-gray-400 text-sm">
-              <span>Made with</span>
-              <span className="text-red-500">❤️</span>
-              <span>using React & Tailwind CSS</span>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
