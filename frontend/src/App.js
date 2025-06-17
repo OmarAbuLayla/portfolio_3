@@ -291,14 +291,23 @@ const Portfolio = () => {
             <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">About Me</h2>
             <div className="w-20 h-1 bg-[#34a853] mx-auto"></div>
           </div>
-          <div className="max-w-4xl">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-medium text-gray-900 mb-4">Professional Journey</h3>
-              <p className="text-gray-600 leading-relaxed">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-[#e8f5e9] to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#34a853]/20">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-[#34a853] rounded-full flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900">Professional Journey</h3>
+              </div>
+              
+              <p className="text-gray-600 leading-relaxed mb-6">
                 As an Associate Data Scientist certified through DataCamp's comprehensive 120-hour career track, 
                 I've mastered the complete data science pipeline from data wrangling to machine learning deployment.
               </p>
-              <div className="bg-[#e8f5e9] p-6 rounded-xl">
+              
+              <div className="bg-white p-6 rounded-xl mb-6">
                 <h4 className="font-semibold text-gray-900 mb-3">DataCamp Certification Highlights:</h4>
                 <ul className="space-y-2 text-gray-700">
                   <li>• 23 courses covering Python, data analysis, and ML</li>
@@ -307,6 +316,7 @@ const Portfolio = () => {
                   <li>• Real-world applications: Built Hayat AI and Complyt AI</li>
                 </ul>
               </div>
+              
               <p className="text-gray-600 leading-relaxed">
                 I specialize in building AI-powered applications, from medical diagnostic tools to regulatory 
                 compliance analyzers, combining cutting-edge LLM technology with robust data science foundations.
